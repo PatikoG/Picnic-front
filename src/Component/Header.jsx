@@ -4,6 +4,10 @@ import styled from 'styled-components'
 
 export default function Header() {
   return (
+  <div>
+    <HomeD>
+      <HomeLink to='/'>Home</HomeLink>
+    </HomeD>
     <HeaderInfo>
         <StyledLink to='/mobile'>Mobile</StyledLink>
         <StyledLink to='/web'>Web</StyledLink>
@@ -11,11 +15,33 @@ export default function Header() {
         <StyledLink to='/university'>University</StyledLink>
         <StyledLink to='/custom'>Custom</StyledLink>
     </HeaderInfo>
+  </div>
   )
 }
 
+const HomeD = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+`
+
+const HomeLink = styled(Link)`
+color: black;
+  text-align: center;
+  width: 150px;
+  background-color: #11fb11;
+  text-decoration: none;
+  border-radius: 11px;
+  font-size: 20px;
+  line-height: 29px;
+  font-weight: 700;
+  margin-bottom: 80px;
+  
+`
+
+
 const HeaderInfo = styled.div`
-    margin-top: 48px;
+    
     margin-bottom: 48px;
     display: flex;
     align-items: center;
