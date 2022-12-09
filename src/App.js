@@ -22,7 +22,7 @@ function App() {
 
 
   useEffect(() => {
-    axios.get('http://localhost:3000/').then((response) => {
+    axios.get('https://picnic-back-production.up.railway.app/').then((response) => {
       setData(response.data);
     });
   }, []);
