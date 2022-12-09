@@ -1,25 +1,48 @@
-import logo from './logo.svg';
+import axios from 'axios'
 import './App.css';
+import styled from 'styled-components'
+import { Gender } from './Component/segmenttypes/Gender';
+import { Mobile } from './Component/segmenttypes/Mobile';
+import { useEffect, useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import Home from './Component/Home';
+import { University } from './Component/segmenttypes/University';
+import { Web } from './Component/segmenttypes/Web';
+import { Custom } from './Component/segmenttypes/Custom';
+
+
+
+
+
 
 function App() {
+  const [data, setData] = useState([]);
+  
+
+
+
+  useEffect(() => {
+    axios.get('http://localhost:3000/').then((response) => {
+      setData(response.data);
+    });
+  }, []);
+
+
+
+  console.table(data)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Routes>
+      <Route path='/' element={<Home data={data} />}/>
+      <Route path='/gender' element={<Gender data={data}/>}/>
+      <Route path='/mobile' element={<Mobile data={data}/>}/>
+      <Route path='/university' element={<University data={data}/>}/>
+      <Route path='/web' element={<Web data={data}/>}/>
+      <Route path='/custom' element={<Custom data={data}/>}/>
+    </Routes>
+  )
 }
 
 export default App;
+
+
+
